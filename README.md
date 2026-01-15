@@ -1,245 +1,182 @@
-# StarkPulse Web ⚡🔒
+# LumenPulse
 
-StarkPulse is a cutting-edge, decentralized crypto news aggregator and portfolio management platform built on the StarkNet ecosystem. This monorepo contains the complete web application stack including frontend, backend API, and data processing modules.
+LumenPulse is a cutting-edge, decentralized crypto news aggregator and portfolio management platform built on the Stellar blockchain ecosystem. Leveraging Stellar's sub-second settlements, low fees, and Soroban smart contracts, LumenPulse curates real-time news from trusted sources, enables seamless portfolio tracking, and rewards community contributions with on-chain incentives—empowering users with transparent, borderless access to crypto insights.
 
-## 🎯 Overview
+Designed for crypto enthusiasts, traders, and developers worldwide, LumenPulse simplifies staying informed and managing assets in volatile markets. Whether you're a novice investor monitoring trends or a DeFi power user analyzing on-chain data, the platform's intuitive UI, robust API, and blockchain integration foster informed decisions and community-driven content, all while promoting financial inclusion through Stellar's efficient infrastructure.
 
-StarkPulse Web delivers a comprehensive ecosystem for cryptocurrency enthusiasts, featuring real-time news aggregation, portfolio management, and StarkNet blockchain integration. The platform combines a futuristic UI design with powerful backend services and intelligent data processing capabilities.
+## Features
+### Core
+- **Futuristic UI/UX**: Sleek, responsive design with animated components and interactive dashboards.
+- **Stellar Wallet Integration**: Seamless connections via Freighter or Lobstr for secure auth and transactions.
+- **News Aggregation Dashboard**: Real-time curation from multiple sources with sentiment analysis.
+- **Portfolio Visualization**: Dynamic charts for asset tracking, performance metrics, and risk assessment.
 
-## 🏗️ Architecture
+### Advanced
+- **Transaction History**: Detailed on-chain views with Stellar explorer links.
+- **Community Engagement**: Rating, commenting, and rewarded content submissions via Soroban contracts.
+- **RESTful API**: Scalable backend for data queries and integrations.
+- **Intelligent Data Processing**: Automated analytics for market trends and portfolio optimization.
 
-This repository is organized as a monorepo containing three main modules:
-
-```
-starkpulse-web/
-├── frontend/           # Next.js frontend application
-├── backend-api/        # Express.js backend API
-└── data-processing/    # Python data processing module
-```
-
-## ✨ Key Features
-
-- **Futuristic UI/UX** 🎨: Sleek, modern interface with animated components and responsive design
-- **StarkNet Wallet Integration** 🔐: Seamless connection with StarkNet wallets for secure authentication
-- **News Aggregation Dashboard** 📰: Real-time crypto news from multiple trusted sources
-- **Portfolio Visualization** 📊: Interactive charts and metrics for tracking crypto assets
-- **Transaction History** 🔍: Comprehensive view of on-chain activities
-- **Community Engagement Tools** 👥: Rating, commenting, and content contribution features
-- **RESTful API** 🚀: Robust backend services for data management
-- **Intelligent Data Processing** 📊: Advanced crypto data aggregation and analytics
-
-## 🛠️ Tech Stack
-
+## Tech Stack
 ### Frontend
-
-- **Next.js 14**: App router, server components, and streaming
-- **React 18**: Component-based UI development
-- **TypeScript**: Type-safe code
-- **TailwindCSS**: Utility-first styling
-- **Zustand**: State management
-- **Starknet.js**: StarkNet blockchain interaction
-- **Lucide**: Modern icon library
-- **Recharts**: Responsive charting library
+- Next.js 15: App router, server components, and streaming.
+- React 18: Component-based UI.
+- TypeScript: Type-safe development.
+- Tailwind CSS: Utility-first styling.
+- Zustand: Lightweight state management.
+- Stellar SDK: Blockchain interactions.
+- Lucide: Icon library.
+- Recharts: Charting visuals.
 
 ### Backend API
-
-- **Node.js**: Runtime environment
-- **Express.js 4.18.2**: Web framework
-- **RESTful Architecture**: Clean API design
-- **CORS Support**: Cross-origin resource sharing
-- **Nodemon 3.0.1**: Development hot reload
+- Node.js: Runtime.
+- Express.js 4.18.2: Web framework.
+- RESTful design with CORS and error handling.
+- Nodemon 3.0.1: Hot reload.
 
 ### Data Processing
+- Python 3.9+: Core language.
+- Libraries for crypto/news aggregation and analytics.
+- Stellar integration for on-chain data.
 
-- **Python 3.9+**: Core processing language
-- **Crypto Data Processing**: Market data aggregation
-- **News Processing**: Content aggregation and analysis
-- **Portfolio Analytics**: Performance tracking
-- **StarkNet Integration**: Blockchain data processing
+### Blockchain
+- Stellar Blockchain: Core network for transactions and rewards.
+- Soroban: Rust smart contracts for content incentives and data verification.
+- Stellar SDK (JS): Client-side queries and tx building.
 
-## 🚀 Getting Started
+### Monorepo
+- pnpm workspaces with TurboRepo for unified builds.
+
+## Repository Structure
+LumenPulse is a monorepo for streamlined development across web, API, data, and blockchain layers. The structure supports independent module scaling while sharing utilities like auth and Stellar helpers.
+
+```
+lumenpulse/
+├── apps/
+│   ├── frontend/              # Next.js UI (dashboards, news feeds)
+│   ├── backend-api/           # Express.js REST API (data endpoints)
+│   └── data-processing/       # Python scripts (aggregation, analytics)
+├── packages/
+│   ├── ui/                    # Shared React components/icons
+│   └── stellar-sdk/           # Stellar/Soroban wrappers (tx utils, contract calls)
+├── soroban-contracts/         # Rust Soroban contracts (rewards, content verification)
+│   ├── src/
+│   │   ├── lib.rs             # Core logic (e.g., reward minting)
+│   │   └── test.rs            # Unit tests
+│   └── Cargo.toml             # Dependencies (soroban-sdk)
+├── .pnpm-workspace.yaml       # pnpm config
+├── turbo.json                 # Build pipelines
+└── .env.example               # Env template
+```
+
+For module-specific docs: [FRONTEND.md](FRONTEND.md), [BACKEND.md](BACKEND.md), [DATA-PROCESSING.md](DATA-PROCESSING.md), [SOROBAN.md](SOROBAN.md).
+
+## Setup Instructions
 
 ### Prerequisites
+- Node.js 18+ ([nodejs.org](https://nodejs.org)).
+- pnpm (install: `npm install -g pnpm`).
+- Python 3.9+ ([python.org](https://python.org)).
+- Rust 1.75+ (for Soroban; [rustup.rs](https://rustup.rs); add WASM target: `rustup target add wasm32-unknown-unknown`).
+- Stellar testnet wallet (Freighter; [freighter.app](https://freighter.app)).
+- Git and pip.
 
-- **Node.js 18.0.0** or higher
-- **Python 3.9** or higher
-- **npm** package manager
-- **pip** package manager
-- **Git**
+### Installation
+1. Clone the repository:
+   ```
+   git clone https://github.com/Pulsefy/Lumenpulse.git
+   cd Lumenpulse
+   ```
 
-### Quick Start
-
-1. **Clone the repository**:
-
-```bash
-git clone https://github.com/Pulsefy/Starkpulse-web.git
-cd starkpulse-web
-```
-
-2. **Setup Frontend**:
-
-```bash
-cd frontend
-npm install
-npm run dev
-```
-
-Access at: <http://localhost:3000>
-
-3. **Setup Backend API**:
-
-```bash
-cd backend-api
-npm install
-npm start
-```
-
-API available at: <http://localhost:8000>
-
-4. **Setup Data Processing** (Optional):
-
-```bash
-cd data-processing
-pip install -r requirements.txt
-python main.py
-```
-
-## 📁 Module Details
-
-### Frontend (`/frontend`)
-
-The Next.js frontend application providing the user interface.
-
-**Key Directories:**
-
-- `app/` - Next.js app router pages
-- `components/` - Reusable UI components
-- `hooks/` - Custom React hooks
-- `lib/` - Utility functions and constants
-- `public/` - Static assets
-- `providers/` - Context providers
-
-**Scripts:**
-
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run start` - Start production server
-- `npm run lint` - Run ESLint
-- `npm run test` - Run tests
-
-### Backend API (`/backend-api`)
-
-Express.js backend providing RESTful API services.
-
-**Features:**
-
-- Health monitoring endpoints
-- Comprehensive error handling
-- JSON request parsing
-- Development hot reload
-
-**Scripts:**
-
-- `npm start` - Start production server
-- `npm run dev` - Start development server with nodemon
-
-### Data Processing (`/data-processing`)
-
-Python module for cryptocurrency data processing and analysis.
-
-**Processors:**
-
-- `CryptoDataProcessor` - Market data aggregation
-- `NewsProcessor` - News content processing
-- `PortfolioProcessor` - Portfolio analytics
-- `StarkNetProcessor` - Blockchain data processing
-
-## 🔧 Development
+2. Install dependencies:
+   ```
+   pnpm install
+   cd soroban-contracts && cargo build --target wasm32-unknown-unknown --release && cd ..
+   cd data-processing && pip install -r requirements.txt && cd ..
+   ```
 
 ### Environment Setup
+1. Copy `.env.example` to `.env` (root) and configure:
+   ```
+   NODE_ENV=development
+   PORT=3000
+   DB_HOST=localhost
+   DB_PORT=5432
+   DB_USER=your_user
+   DB_PASS=your_pass
+   API_KEY=your_external_api_key
+   STELLAR_NETWORK=testnet  # "mainnet" for production
+   WALLET_SECRET=your_stellar_secret  # Base64 for dev txs
+   SOROBAN_RPC_URL=http://localhost:8000/soroban/rpc  # Local RPC
+   ```
+2. Database: Set up PostgreSQL (e.g., via Docker) and run migrations in `backend-api`: `npx prisma migrate dev` (if using Prisma).
+3. Stellar: Fund testnet wallet at [laboratory.stellar.org](https://laboratory.stellar.org).
+4. Soroban: Install CLI (`cargo install --git https://github.com/stellar/rs-soroban-cli soroban-cli`).
 
-1. **Frontend Environment**:
-   - Copy `.env.example` to `.env.local` in the frontend directory
-   - Configure environment variables as needed
+### Running Locally
+1. Start Soroban RPC (for contracts):
+   ```
+   soroban rpc serve --network testnet --port 8000
+   ```
+2. Launch with TurboRepo:
+   ```
+   pnpm turbo run dev
+   ```
+   - Frontend: [http://localhost:3000](http://localhost:3000).
+   - Backend: [http://localhost:8000](http://localhost:8000).
+   - Data Processing: Runs as background script (invoke via API).
+3. Deploy/deploy test contract:
+   ```
+   cd soroban-contracts
+   soroban contract deploy --wasm target/wasm32-unknown-unknown/release/lumenpulse.wasm --network testnet
+   ```
+4. Connect wallet in frontend to test news/portfolio features.
 
-2. **Data Processing Environment**:
-   - Copy `.env.example` to `.env` in the data-processing directory
-   - Configure API keys and database connections
+### Testing
+1. Lint/type-check:
+   ```
+   pnpm turbo run lint
+   ```
+2. Unit tests:
+   ```
+   pnpm turbo run test  # JS/TS (Jest)
+   cd soroban-contracts && cargo test  # Rust
+   cd data-processing && pytest  # Python
+   ```
+3. E2E:
+   ```
+   pnpm turbo run test:e2e  # Playwright for frontend
+   ```
+   Tests require testnet; mocks for external APIs.
 
-### Running in Development
+### Deployment
+- **Frontend**: Vercel—connect repo, add env vars.
+- **Backend/Data**: Railway or AWS; containerize Python scripts.
+- **Soroban Contracts**: Deploy via CI/CD (GitHub Actions); verify on Stellar explorer.
+- Production: Set `STELLAR_NETWORK=mainnet`; audit contracts.
 
-For full development setup, run all modules simultaneously:
+## Usage
+1. **News Feed**: Browse aggregated articles; rate/comment for rewards.
+2. **Portfolio**: Connect wallet → add assets → view charts/transactions.
+3. **Contribute**: Submit insights; earn via Soroban reward contract.
+4. **API**: Query endpoints like `/api/news` or `/api/portfolio`.
 
-```bash
-# Terminal 1 - Frontend
-cd frontend && npm run dev
+## Contributing
+We welcome contributions to evolve LumenPulse! See [CONTRIBUTING.md](CONTRIBUTING.md) for details:
+- **Issues**: Report bugs/features with repro steps.
+- **PRs**:
+  1. Fork/branch: `git checkout -b feat/your-feature`.
+  2. Code/test/lint.
+  3. Commit: "feat: add Soroban reward minting".
+  4. PR to `main`.
+- Monorepo tips: Use `pnpm turbo run build --filter=...` for targeted builds.
+- Guidelines: Follow conventions, add tests, update docs. Adhere to [Code of Conduct](CODE_OF_CONDUCT.md).
 
-# Terminal 2 - Backend API
-cd backend-api && npm run dev
+## License
+MIT License. See [LICENSE](LICENSE).
 
-# Terminal 3 - Data Processing (Optional)
-cd data-processing && python main.py
-```
+## Support & Community
+- Discord: [discord.gg/lumenpulse](https://discord.gg/lumenpulse).
+- Questions? Tag  @Cedarich in issues.
 
-## 🚀 Deployment
-
-Each module can be deployed independently:
-
-- **Frontend**: Deploy to Vercel
-- **Backend API**: Deploy to Railway
-- **Data Processing**: Deploy to cloud functions or container services
-
-## 🤝 Contributing
-
-We welcome contributions to StarkPulse Web! Please follow these steps:
-
-1. Fork the repository
-2. Create your feature branch: `git checkout -b feature/amazing-feature`
-3. Commit your changes: `git commit -m 'Add some amazing feature'`
-4. Push to the branch: `git push origin feature/amazing-feature`
-5. Open a Pull Request
-
-### Development Guidelines
-
-- Follow the existing code style and conventions
-- Write tests for new features
-- Update documentation as needed
-- Ensure all modules work together seamlessly
-
-## 📄 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## 👥 Maintainers
-
-- **Divineifed1** 👨‍💻
-- **Cedarich** 👨‍💻
-
-## 🔗 Links
-
-- [Frontend Documentation](./frontend/README.md)
-- [Backend API Documentation](./backend-api/README.md)
-- [Data Processing Documentation](./data-processing/README.md)
-- [StarkNet Documentation](https://docs.starknet.io/)
-
----
-
-<p align="center">
-  Built with ❤️ by the StarkPulse Team
-</p>
-
-# Environment Configuration
-
-This project uses environment variables for configuration. Copy `.env.example` to `.env.development`, `.env.staging`, or `.env.production` as needed and fill in the values.
-
-## Variables
-
-- `DB_HOST`: Database host
-- `DB_PORT`: Database port
-- `DB_USER`: Database user
-- `DB_PASS`: Database password (keep secret!)
-- `API_KEY`: API key for external services (keep secret!)
-- `NODE_ENV`: Application environment (`development`, `staging`, `production`)
-- `PORT`: Port the app runs on (default: 3000)
-
-**Never commit real secrets to version control. Use `.env.example` as a template only.**
+Built with ❤️ by the LumenPulse Team. Powered by Stellar. 🚀
