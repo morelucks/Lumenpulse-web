@@ -6,8 +6,8 @@ import { AppService } from './app.service';
 import { TestExceptionController } from './test-exception.controller';
 
 @Module({
-  imports: [],
   controllers: [AppController, TestExceptionController],
+  providers: [AppService],
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
@@ -30,7 +30,5 @@ import { TestExceptionController } from './test-exception.controller';
       inject: [ConfigService],
     }),
   ],
-  controllers: [AppController],
-  providers: [AppService],
 })
 export class AppModule {}
