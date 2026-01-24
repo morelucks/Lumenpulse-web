@@ -178,7 +178,11 @@ impl CrowdfundVaultContract {
     }
 
     /// Approve milestone for a project (admin only)
-    pub fn approve_milestone(env: Env, admin: Address, project_id: u64) -> Result<(), CrowdfundError> {
+    pub fn approve_milestone(
+        env: Env,
+        admin: Address,
+        project_id: u64,
+    ) -> Result<(), CrowdfundError> {
         // Check if contract is initialized
         let stored_admin: Address = env
             .storage()
