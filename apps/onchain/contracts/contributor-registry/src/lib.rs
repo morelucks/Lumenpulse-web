@@ -81,8 +81,10 @@ impl ContributorRegistryContract {
             .ok_or(ContributorError::ContributorNotFound)?;
 
         let new_score = if delta > 0 {
-            contributor.reputation_score.checked_add(delta as u64)
-            .ok_or(ContributorError::ReputationOverflow)?
+            contributor
+                .reputation_score
+                .checked_add(delta as u64)
+                .ok_or(ContributorError::ReputationOverflow)?
         } else {
             let new_delta = match delta.checked_abs() {
                 Some(new_delta) => new_delta as u64,
@@ -104,9 +106,8 @@ impl ContributorRegistryContract {
     /// Get contributor reputation
     pub fn get_reputation(env: Env, contributor: Address) -> Result<u64, ContributorError> {
         let contributor_data: ContributorData = Self::get_contributor(env, contributor)?;
-        return Ok(contributor_data.reputation_score)
+        return Ok(contributor_data.reputation_score);
     }
-
 
     /// Get contributor profile data
     pub fn get_contributor(
