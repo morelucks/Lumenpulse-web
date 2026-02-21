@@ -19,14 +19,14 @@ describe('AppController (e2e)', () => {
   });
 
   it('/ (GET)', () => {
-    return request(app.getHttpServer())
+    return request(app.getHttpServer() as Express.Application)
       .get('/')
       .expect(200)
       .expect('Hello World!');
   });
 
   it('/nonexistent (GET) - should return standardized error response', () => {
-    return request(app.getHttpServer())
+    return request(app.getHttpServer() as Express.Application)
       .get('/nonexistent')
       .expect(404)
       .then(
